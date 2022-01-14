@@ -8,112 +8,148 @@ import javafx.scene.input.MouseEvent;
 
 public class ButtonController {
     @FXML
-    public Button buttonComa;
+    private Button buttonComa;
     @FXML
-    public Button button0;
+    private Button button0;
     @FXML
-    public Button button1;
+    private Button button1;
     @FXML
-    public Button button2;
+    private Button button2;
     @FXML
-    public Button button3;
+    private Button button3;
     @FXML
-    public Button button4;
+    private Button button4;
     @FXML
-    public Button button5;
+    private Button button5;
     @FXML
-    public Button button6;
+    private Button button6;
     @FXML
-    public Button button7;
+    private Button button7;
     @FXML
-    public Button button8;
+    private Button button8;
     @FXML
-    public Button button9;
+    private Button button9;
     @FXML
-    public Button buttonMinus;
+    private Button buttonMinus;
     @FXML
-    public Button buttonDivision;
+    private Button buttonDivision;
     @FXML
-    public Button buttonPlus;
+    private Button buttonPlus;
     @FXML
-    public Button buttonMultiply;
+    private Button buttonMultiply;
     @FXML
-    public Button buttonEquals;
+    private Button buttonEquals;
     @FXML
-    public Button buttonMemoPlus;
+    private Button buttonMemoPlus;
     @FXML
-    public Button buttonMemoMinus;
+    private Button buttonMemoMinus;
     @FXML
-    public ProgressBar progressBar;
-    @FXML
-    public TextField textField;
-    @FXML
-    public Button buttonSignMinus;
+    private ProgressBar progressBar;
 
-    void press(Button someButton){
-        if (someButton.getId().equals("0")){
-            System.out.println("0");
-        }
+    @FXML
+    private TextField textField;
+    @FXML
+    private Button buttonSignMinus;
+
+    @FXML
+    public void onButtonClickedSingMinus(MouseEvent mouseEvent) {
+        NumberHolder.addNumber(buttonSignMinus.getText());
     }
 
     @FXML
     private void onButtonClicked0(MouseEvent mouseEvent) throws InterruptedException {
-        NumberHolder.addNumber(button0.getText());
+        changeText(NumberHolder.addNumber(button0.getText()).toString());
     }
 
-    public void onButtonClickedSingMinus(MouseEvent mouseEvent) {
-        System.out.println("button.getText() - " + buttonSignMinus.getText());
-        System.out.println("button.getId() - " + buttonSignMinus.getId());
-    }
-
+    @FXML
     public void onButtonClickedComa(MouseEvent mouseEvent) {
+        changeText(NumberHolder.addNumber(buttonComa.getText()).toString());
+
     }
 
+    @FXML
     public void onButtonClicked1(MouseEvent mouseEvent) {
+        changeText(NumberHolder.addNumber(button1.getText()).toString());
+
     }
 
+    @FXML
     public void onButtonClicked2(MouseEvent mouseEvent) {
+        changeText(NumberHolder.addNumber(button2.getText()).toString());
     }
 
+    @FXML
     public void onButtonClicked3(MouseEvent mouseEvent) {
+        changeText(NumberHolder.addNumber(button3.getText()).toString());
     }
 
+    @FXML
     public void onButtonClicked4(MouseEvent mouseEvent) {
+        changeText(NumberHolder.addNumber(button4.getText()).toString());
     }
 
+    @FXML
     public void onButtonClicked5(MouseEvent mouseEvent) {
+        changeText(NumberHolder.addNumber(button5.getText()).toString());
     }
 
+    @FXML
     public void onButtonClicked6(MouseEvent mouseEvent) {
+        changeText(NumberHolder.addNumber(button6.getText()).toString());
     }
 
+    @FXML
+    public void onButtonClicked7(MouseEvent mouseEvent) {
+        changeText(NumberHolder.addNumber(button7.getText()).toString());
+    }
+
+    @FXML
+    public void onButtonClicked8(MouseEvent mouseEvent) {
+        changeText(NumberHolder.addNumber(button8.getText()).toString());
+    }
+
+    @FXML
+    public void onButtonClicked9(MouseEvent mouseEvent) {
+        changeText(NumberHolder.addNumber(button9.getText()).toString());
+    }
+
+    @FXML
     public void onButtonClickedEquals(MouseEvent mouseEvent) {
     }
 
+    @FXML
     public void onButtonClickedMinus(MouseEvent mouseEvent) {
     }
 
+    @FXML
     public void onButtonClickedDivision(MouseEvent mouseEvent) {
     }
 
+    @FXML
     public void onButtonClickedPlus(MouseEvent mouseEvent) {
     }
 
+    @FXML
     public void onButtonClickedMultiply(MouseEvent mouseEvent) {
     }
 
-    public void onButtonClicked7(MouseEvent mouseEvent) {
-    }
-
-    public void onButtonClicked8(MouseEvent mouseEvent) {
-    }
-
-    public void onButtonClicked9(MouseEvent mouseEvent) {
-    }
-
+    @FXML
     public void onButtonClickedMemoPlus(MouseEvent mouseEvent) {
     }
 
+    @FXML
     public void onButtonClickedMemoMinus(MouseEvent mouseEvent) {
+    }
+
+    public void changeText(String text){
+        textField.setText(text);
+    }
+
+    public TextField getTextField() {
+        return textField;
+    }
+
+    public void setTextField(TextField textField) {
+        this.textField = textField;
     }
 }
