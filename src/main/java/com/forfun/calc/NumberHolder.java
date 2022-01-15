@@ -55,6 +55,7 @@ public class NumberHolder {
         if (numberInString.isEmpty() || ( numberInString.toString().length() == 1 && numberInString.charAt(0) == '-')) {
             numberInString = null;
             numberInString = new StringBuilder("");
+            isMinus = false;
         }
         return numberInString.toString();
     }

@@ -32,7 +32,7 @@
                         <Font size="18.0" />
                     </font>
                 </Button>
-                <Button fx:id="buttonSignMinus" layoutX="72.0" layoutY="401.0" mnemonicParsing="false" prefHeight="76.0" prefWidth="72.0" text="+ / -" onMouseClicked="#onButtonClickedSingMinus">
+                <Button fx:id="buttonSignMinus" layoutX="72.0" layoutY="401.0" mnemonicParsing="false" prefHeight="76.0" prefWidth="72.0" text="+/-" onMouseClicked="#onButtonClickedSingMinus">
                     <font>
                         <Font size="18.0" />
                     </font>
@@ -112,18 +112,35 @@
                         <Font size="18.0" />
                     </font>
                 </Button>
-                <Button fx:id="buttonMemoPlus" layoutX="216.0" layoutY="177.0" mnemonicParsing="false" prefHeight="75.0" prefWidth="72.0" text="М+" onMouseClicked="#onButtonClickedMemoPlus">
+
+                <Button fx:id="buttonClear" layoutX="216.0" layoutY="177.0" mnemonicParsing="false" prefHeight="35.0" prefWidth="72.0" text="C" onMouseClicked="#onButtonClickedClear">
                     <font>
-                        <Font size="24.0" />
+                        <Font size="17.0" />
                     </font>
                 </Button>
-                <Button fx:id="buttonMemoMinus" layoutX="288.0" layoutY="177.0" mnemonicParsing="false" prefHeight="75.0" prefWidth="72.0" text="М-" onMouseClicked="#onButtonClickedMemoMinus">
+                <Button fx:id="buttonBackSpace" layoutX="288.0" layoutY="177.0" mnemonicParsing="false" prefHeight="35.0" prefWidth="72.0" text="←" onMouseClicked="#onButtonClickedBackSpace">
                     <font>
-                        <Font size="24.0" />
+                        <Font size="17.0" />
                     </font>
                 </Button>
+
+                <Button fx:id="buttonMemoPlus" layoutX="216.0" layoutY="215.0" mnemonicParsing="false" prefHeight="35.0" prefWidth="72.0" text="М+" onMouseClicked="#onButtonClickedMemoPlus">
+                    <font>
+                        <Font size="17.0" />
+                    </font>
+                </Button>
+                <Button fx:id="buttonMemoMinus" layoutX="288.0" layoutY="215.0" mnemonicParsing="false" prefHeight="35.0" prefWidth="72.0" text="М-" onMouseClicked="#onButtonClickedMemoMinus">
+                    <font>
+                        <Font size="17.0" />
+                    </font>
+                </Button>
+
                 <ProgressBar fx:id="progressBar" layoutY="5.0" prefHeight="19.0" prefWidth="441.0" progress="0.0"/>
-                <TextField fx:id="textField" alignment="CENTER_RIGHT" layoutX="-1.0" layoutY="94.0" prefHeight="76.0" prefWidth="365.0" text="0"/>
+                <TextField fx:id="textField" alignment="CENTER_RIGHT" layoutX="-1.0" layoutY="94.0" prefHeight="76.0" prefWidth="365.0" text="0">
+                    <font>
+                        <Font size="24" />
+                    </font>
+                </TextField>
             </children>
         </AnchorPane>
     </children>

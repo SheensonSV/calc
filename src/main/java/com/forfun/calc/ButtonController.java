@@ -60,6 +60,9 @@ public class ButtonController {
     @FXML
     public void onButtonClickedSingMinus() {
         changeText(NumberHolder.makeNegativeOrPositiveNumber());
+        if (getTextField().getText().equals("")){
+            changeText("0");
+        }
     }
 
     @FXML
