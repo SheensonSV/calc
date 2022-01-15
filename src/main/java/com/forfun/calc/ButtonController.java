@@ -7,6 +7,7 @@ import javafx.scene.control.TextField;
 import javafx.scene.input.MouseEvent;
 
 public class ButtonController {
+
     @FXML
     private Button buttonComa;
     @FXML
@@ -52,12 +53,17 @@ public class ButtonController {
     private Button buttonSignMinus;
 
     @FXML
-    public void onButtonClickedSingMinus(MouseEvent mouseEvent) {
-        NumberHolder.addNumber(buttonSignMinus.getText());
+    public Button buttonBackSpace;
+    @FXML
+    public Button buttonClear;
+
+    @FXML
+    public void onButtonClickedSingMinus() {
+        changeText(NumberHolder.makeNegativeOrPositiveNumber());
     }
 
     @FXML
-    private void onButtonClicked0(MouseEvent mouseEvent) throws InterruptedException {
+    private void onButtonClicked0(MouseEvent mouseEvent){
         changeText(NumberHolder.addNumber(button0.getText()).toString());
     }
 
@@ -141,6 +147,22 @@ public class ButtonController {
     public void onButtonClickedMemoMinus(MouseEvent mouseEvent) {
     }
 
+
+    @FXML
+    public void onButtonClickedClear(MouseEvent mouseEvent) {
+
+        changeText(NumberHolder.clear());
+    }
+
+    @FXML
+    public void onButtonClickedBackSpace(MouseEvent mouseEvent) {
+        changeText(NumberHolder.backSpace());
+        if (getTextField().getText().equals("")){
+            changeText("0");
+        }
+    }
+
+
     public void changeText(String text){
         textField.setText(text);
     }
@@ -152,4 +174,5 @@ public class ButtonController {
     public void setTextField(TextField textField) {
         this.textField = textField;
     }
+
 }

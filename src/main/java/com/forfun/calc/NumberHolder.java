@@ -1,8 +1,5 @@
 package com.forfun.calc;
 
-import javafx.scene.control.ProgressBar;
-import javafx.scene.control.TextField;
-
 public class NumberHolder {
     private static StringBuilder numberInString = new StringBuilder();
     private static long numberLong;
@@ -18,22 +15,22 @@ public class NumberHolder {
         return numberInString;
     }
 
-    void isWasPressedMinus(){
+    public static String makeNegativeOrPositiveNumber(){
         if (!numberInString.isEmpty()){
             if (isMinus){
                 isMinus = false;
+                if (numberInString.toString().charAt(0) == '-')
+                {
+                    numberInString.deleteCharAt(0);
+                }
             }
-            else isMinus = true;
-            changeSignOfNumber(isMinus);
+            else {
+                isMinus = true;
+                numberInString.insert(0, "-");
+            }
         }
+        return numberInString.toString();
     }
-
-    void changeSignOfNumber(Boolean isMinus){
-        StringBuilder minusInNumber = new StringBuilder("-");
-        minusInNumber.append(numberInString);
-        numberInString = minusInNumber;
-    }
-
 
     public static String getNumberInString() {
         if (numberInString.isEmpty())
@@ -43,4 +40,22 @@ public class NumberHolder {
         return numberInString.toString();
     }
 
+    public static String clear() {
+        numberInString = null;
+        numberInString = new StringBuilder("");
+        return numberInString.toString();
+    }
+
+    public static String backSpace() {
+        if (!numberInString.isEmpty() && !numberInString.toString().equals("0"))
+        {
+            int lengthOfNumberString = numberInString.toString().length();
+            numberInString.deleteCharAt(lengthOfNumberString - 1);
+        }
+        if (numberInString.isEmpty() || ( numberInString.toString().length() == 1 && numberInString.charAt(0) == '-')) {
+            numberInString = null;
+            numberInString = new StringBuilder("");
+        }
+        return numberInString.toString();
+    }
 }
