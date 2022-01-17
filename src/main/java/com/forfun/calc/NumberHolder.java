@@ -7,10 +7,17 @@ public class NumberHolder {
     private static Boolean isMinus = false;
     private static boolean isComa;
     private static final short totalDigits = 8;
-    private static ButtonController buttonController = new ButtonController();
+    private static final short totalDigitsWithMinus = 9;
+    private static final short totalSymbolsWithMinusAndComa = 10;
 
     public static StringBuilder addNumber(String n)
     {
+        if (!numberInString.isEmpty() &&
+                (numberInString.charAt(0) == '0' || (numberInString.charAt(1) == '0' && isMinus))
+                    && n.equals("0"))
+        {
+            return numberInString;
+        }
         numberInString.append(n);
         return numberInString;
     }

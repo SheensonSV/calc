@@ -153,8 +153,10 @@ public class ButtonController {
 
     @FXML
     public void onButtonClickedClear(MouseEvent mouseEvent) {
-
         changeText(NumberHolder.clear());
+        if (getTextField().getText().equals("")){
+            changeText("0");
+        }
     }
 
     @FXML
