@@ -57,23 +57,39 @@ public class ButtonController {
     @FXML
     public Button buttonClear;
 
-    @FXML
-    public void onButtonClickedSingMinus() {
-        changeText(NumberHolder.makeNegativeOrPositiveNumber());
+    private void getZeroInTextField(){
         if (getTextField().getText().equals("")){
             changeText("0");
         }
     }
 
     @FXML
+    public void onButtonClickedClear(MouseEvent mouseEvent) {
+        changeText(NumberHolder.clear());
+//        getZeroInTextField();
+    }
+
+    @FXML
+    public void onButtonClickedBackSpace(MouseEvent mouseEvent) {
+        changeText(NumberHolder.backSpace());
+//        getZeroInTextField();
+    }
+
+    @FXML
+    public void onButtonClickedSingMinus() {
+        changeText(NumberHolder.makeNegativeOrPositiveNumber());
+//        getZeroInTextField();
+    }
+
+    @FXML
     private void onButtonClicked0(MouseEvent mouseEvent){
         changeText(NumberHolder.addNumber(button0.getText()).toString());
+//        getZeroInTextField();
     }
 
     @FXML
     public void onButtonClickedComa(MouseEvent mouseEvent) {
         changeText(NumberHolder.addNumber(buttonComa.getText()).toString());
-
     }
 
     @FXML
@@ -151,21 +167,7 @@ public class ButtonController {
     }
 
 
-    @FXML
-    public void onButtonClickedClear(MouseEvent mouseEvent) {
-        changeText(NumberHolder.clear());
-        if (getTextField().getText().equals("")){
-            changeText("0");
-        }
-    }
 
-    @FXML
-    public void onButtonClickedBackSpace(MouseEvent mouseEvent) {
-        changeText(NumberHolder.backSpace());
-        if (getTextField().getText().equals("")){
-            changeText("0");
-        }
-    }
 
 
     public void changeText(String text){

@@ -1,24 +1,70 @@
 package com.forfun.calc;
 
 public class NumberHolder {
-    private static StringBuilder numberInString = new StringBuilder();
+    private static StringBuilder numberInString = new StringBuilder("0");
     private static long numberLong;
     private static double numberDouble;
-    private static Boolean isMinus = false;
-    private static boolean isComa;
+    private static boolean isMinus = false;
+    private static boolean isComa = false;
     private static final short totalDigits = 8;
     private static final short totalDigitsWithMinus = 9;
     private static final short totalSymbolsWithMinusAndComa = 10;
 
+    private static boolean isComaPresentInSequence()
+    {
+        if (!numberInString.isEmpty())
+        {
+            for (int i = 0; i < numberInString.length(); i++)
+            {
+                if (numberInString.charAt(i) == ',')
+                {
+                    return true;
+                }
+            }
+        }
+        return false;
+    }
+    private static boolean isZeroAtFirstPlace()
+    {
+        if (!numberInString.isEmpty())
+        {
+            if (numberInString.charAt(0) == '0') {
+                return true;
+            }
+            return isMinus && numberInString.charAt(1) == '0';
+        }
+        return false;
+    }
+
+    private static void makeZero(){
+        numberInString = new StringBuilder("0");
+    }
+
     public static StringBuilder addNumber(String n)
     {
-        if (!numberInString.isEmpty() &&
-                (numberInString.charAt(0) == '0' || (numberInString.charAt(1) == '0' && isMinus))
-                    && n.equals("0"))
-        {
-            return numberInString;
+        switch (n){
+            case(",") -> {
+                if (!isComaPresentInSequence()){
+                    numberInString.append(n);
+                }
+            }
+            case("0") -> {
+                if (!isZeroAtFirstPlace()){
+                    numberInString.append(n);
+                }
+            }
+            default -> {
+                numberInString.append(n);
+            }
         }
-        numberInString.append(n);
+        if (isZeroAtFirstPlace() && !isComaPresentInSequence() && !isMinus)
+        {
+            numberInString.deleteCharAt(0);
+        }
+        if (isZeroAtFirstPlace() && !isComaPresentInSequence() && isMinus)
+        {
+            numberInString.deleteCharAt(1);
+        }
         return numberInString;
     }
 
@@ -39,31 +85,41 @@ public class NumberHolder {
         return numberInString.toString();
     }
 
-    public static String getNumberInString() {
-        if (numberInString.isEmpty())
-        {
-            return "0";
-        }
-        return numberInString.toString();
-    }
-
     public static String clear() {
         numberInString = null;
-        numberInString = new StringBuilder("");
+        makeZero();
+        isComa = false;
         return numberInString.toString();
     }
 
     public static String backSpace() {
-        if (!numberInString.isEmpty() && !numberInString.toString().equals("0"))
+        if (numberInString.length() == 1)
         {
-            int lengthOfNumberString = numberInString.toString().length();
-            numberInString.deleteCharAt(lengthOfNumberString - 1);
-        }
-        if (numberInString.isEmpty() || ( numberInString.toString().length() == 1 && numberInString.charAt(0) == '-')) {
-            numberInString = null;
-            numberInString = new StringBuilder("");
+            makeZero();
             isMinus = false;
         }
+        if (numberInString.length() == 2 && isMinus)
+        {
+            makeZero();
+            isMinus = false;
+        }
+        if (numberInString.length() == 2 && isComaPresentInSequence())
+        {
+            makeZero();
+            isMinus = false;
+        }
+
+        if (numberInString.length() > 2)
+        {
+            int indexOfDeletingSymbol = numberInString.toString().length() - 1;
+            numberInString.deleteCharAt(indexOfDeletingSymbol);
+        }
+
+//        if (numberInString.isEmpty() || ( numberInString.toString().length() == 1 && numberInString.charAt(0) == '-')) {
+//            numberInString = null;
+//            numberInString = new StringBuilder("");
+//            isMinus = false;
+//        }
         return numberInString.toString();
     }
 }
