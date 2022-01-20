@@ -2,15 +2,17 @@ package com.forfun.calc;
 
 public class NumberHolder {
     private static StringBuilder numberInString = new StringBuilder("0");
-    private static long numberLong;
-    private static double numberDouble;
     private static boolean isMinus = false;
-    private static boolean isComa = false;
     private static final short totalDigits = 8;
     private static final short totalDigitsWithMinus = 9;
     private static final short totalSymbolsWithMinusAndComa = 10;
 
-    private static boolean isComaPresentInSequence()
+    public static StringBuilder getNumberInString()
+    {
+        return numberInString;
+    }
+
+    public static boolean isComaPresentInSequence()
     {
         if (!numberInString.isEmpty())
         {
@@ -31,6 +33,12 @@ public class NumberHolder {
             if (numberInString.charAt(0) == '0') {
                 return true;
             }
+        }
+        return false;
+    }
+
+    private static boolean isZeroAfterMinus(){
+        if (!numberInString.isEmpty()){
             return isMinus && numberInString.charAt(1) == '0';
         }
         return false;
@@ -42,28 +50,35 @@ public class NumberHolder {
 
     public static StringBuilder addNumber(String n)
     {
-        switch (n){
-            case(",") -> {
-                if (!isComaPresentInSequence()){
+        int lengthOfNumber = numberInString.length();
+        if (
+                (lengthOfNumber <= totalSymbolsWithMinusAndComa && isMinus && isComaPresentInSequence()) ||
+                (lengthOfNumber <= totalDigitsWithMinus && isMinus && !isComaPresentInSequence()) ||
+                (lengthOfNumber <= totalDigitsWithMinus && !isMinus && isComaPresentInSequence()) ||
+                (lengthOfNumber <= totalDigits && !isMinus && !isComaPresentInSequence())
+        ) {
+            switch (n) {
+                case (",") -> {
+                    if (!isComaPresentInSequence()) {
+                        numberInString.append(n);
+                    }
+                }
+                case ("0") -> {
+                    if (!isZeroAtFirstPlace() || !isZeroAfterMinus()) {
+                        numberInString.append(n);
+                    }
+                }
+                default -> {
                     numberInString.append(n);
                 }
             }
-            case("0") -> {
-                if (!isZeroAtFirstPlace()){
-                    numberInString.append(n);
-                }
+            if (isZeroAtFirstPlace() && !isComaPresentInSequence() && !isMinus) {
+                numberInString.deleteCharAt(0);
             }
-            default -> {
-                numberInString.append(n);
+
+            if (isZeroAfterMinus() && !isComaPresentInSequence()) {
+                numberInString.deleteCharAt(1);
             }
-        }
-        if (isZeroAtFirstPlace() && !isComaPresentInSequence() && !isMinus)
-        {
-            numberInString.deleteCharAt(0);
-        }
-        if (isZeroAtFirstPlace() && !isComaPresentInSequence() && isMinus)
-        {
-            numberInString.deleteCharAt(1);
         }
         return numberInString;
     }
@@ -86,9 +101,8 @@ public class NumberHolder {
     }
 
     public static String clear() {
-        numberInString = null;
         makeZero();
-        isComa = false;
+        isMinus = false;
         return numberInString.toString();
     }
 
@@ -108,18 +122,11 @@ public class NumberHolder {
             makeZero();
             isMinus = false;
         }
-
-        if (numberInString.length() > 2)
+        if (numberInString.length() >= 2)
         {
             int indexOfDeletingSymbol = numberInString.toString().length() - 1;
             numberInString.deleteCharAt(indexOfDeletingSymbol);
         }
-
-//        if (numberInString.isEmpty() || ( numberInString.toString().length() == 1 && numberInString.charAt(0) == '-')) {
-//            numberInString = null;
-//            numberInString = new StringBuilder("");
-//            isMinus = false;
-//        }
         return numberInString.toString();
     }
 }

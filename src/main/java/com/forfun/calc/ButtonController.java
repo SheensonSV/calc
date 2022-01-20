@@ -140,35 +140,38 @@ public class ButtonController {
 
     @FXML
     public void onButtonClickedEquals(MouseEvent mouseEvent) {
+        changeText(Result.getResult());
     }
 
     @FXML
     public void onButtonClickedMinus(MouseEvent mouseEvent) {
-    }
-
-    @FXML
-    public void onButtonClickedDivision(MouseEvent mouseEvent) {
+        changeText(Result.act(ActionsWithNumbers.MINUS));
     }
 
     @FXML
     public void onButtonClickedPlus(MouseEvent mouseEvent) {
+        changeText(Result.act(ActionsWithNumbers.PLUS));
     }
 
     @FXML
     public void onButtonClickedMultiply(MouseEvent mouseEvent) {
+        changeText(Result.act(ActionsWithNumbers.MULTIPLICATION));
+    }
+
+    @FXML
+    public void onButtonClickedDivision(MouseEvent mouseEvent) {
+        changeText(Result.act(ActionsWithNumbers.DIVISION));
     }
 
     @FXML
     public void onButtonClickedMemoPlus(MouseEvent mouseEvent) {
+        Memo.memoPlus();
     }
 
     @FXML
     public void onButtonClickedMemoMinus(MouseEvent mouseEvent) {
+        Memo.memoPlus();
     }
-
-
-
-
 
     public void changeText(String text){
         textField.setText(text);
