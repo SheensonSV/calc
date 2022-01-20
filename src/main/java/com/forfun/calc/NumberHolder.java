@@ -12,6 +12,13 @@ public class NumberHolder {
         return numberInString;
     }
 
+    public static void setNumberInString(String newNumber){
+        if (newNumber != null)
+        {
+            numberInString = new StringBuilder(newNumber);
+        }
+    }
+
     public static boolean isComaPresentInSequence()
     {
         if (!numberInString.isEmpty())
