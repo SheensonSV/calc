@@ -7,7 +7,7 @@ import javafx.scene.control.TextField;
 import javafx.scene.input.MouseEvent;
 
 public class ButtonController {
-
+    private double fillProgressBar;
     @FXML
     private Button buttonComa;
     @FXML
@@ -139,8 +139,8 @@ public class ButtonController {
     }
 
     @FXML
-    public void onButtonClickedEquals(MouseEvent mouseEvent) {
-        changeText(Result.getResult());
+    public void onButtonClickedEquals() {
+        changeText(Result.getResult().toString());
     }
 
     @FXML
@@ -183,6 +183,16 @@ public class ButtonController {
 
     public void setTextField(TextField textField) {
         this.textField = textField;
+    }
+
+    @FXML
+    protected void onProgressBarClick() throws InterruptedException {
+       fillProgressBar = fillProgressBar + 0.025;
+       progressBar.setProgress(fillProgressBar);
+       if (fillProgressBar > 0.9999)
+       {
+           fillProgressBar = 0;
+       }
     }
 
 }

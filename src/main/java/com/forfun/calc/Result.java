@@ -1,43 +1,75 @@
 package com.forfun.calc;
 
 public class Result {
-    private static Summing summing = new Summing();
-    private static Minusing minusing = new Minusing();
-    private static Multiply multiply = new Multiply();
-    private static Division division = new Division();
+    private static NumbersDAO numbersDAO = new NumbersDAO();
+    private static ActionsWithNumbers currentAction;
 
-    public static String getResult(){
-        return null;
+    public static Double getResult(){
+        numbersDAO.setNextNumber(NumberHolder.getNumberInString().toString());
+        return makeResult(currentAction);
     }
 
-    private static String makeResult(Action action){
-        action.getFirstNumber();
-
-        return "0";
+    private static Double makeResult(ActionsWithNumbers actions){
+        Double result;
+        switch (actions){
+            case PLUS -> {
+//                numbersDAO.setNextNumber(NumberHolder.getNumberInString().toString());
+                result = Double.parseDouble(numbersDAO.getFirstNumber()) + Double.parseDouble(numbersDAO.getNextNumber());
+                NumberHolder.setNumberInString(result.toString());
+                return result;
+            }
+            case MINUS -> {
+//                numbersDAO.setNextNumber(NumberHolder.getNumberInString().toString());
+                result = Double.parseDouble(numbersDAO.getFirstNumber()) - Double.parseDouble(numbersDAO.getNextNumber());
+                NumberHolder.setNumberInString(result.toString());
+                return result;
+            }
+            case DIVISION -> {
+//                numbersDAO.setNextNumber(NumberHolder.getNumberInString().toString());
+                result = Double.parseDouble(numbersDAO.getFirstNumber()) / Double.parseDouble(numbersDAO.getNextNumber());
+                NumberHolder.setNumberInString(result.toString());
+                return result;
+            }
+            case MULTIPLICATION -> {
+//                numbersDAO.setNextNumber(NumberHolder.getNumberInString().toString());
+                result = Double.parseDouble(numbersDAO.getFirstNumber()) * Double.parseDouble(numbersDAO.getNextNumber());
+                NumberHolder.setNumberInString(result.toString());
+                return result;
+            }
+            default -> {}
+        }
+        return 0.;
     }
 
     public static String act(ActionsWithNumbers actions){
         switch (actions){
             case PLUS -> {
-                summing.setFirstNumber(NumberHolder.getNumberInString().toString());
-                makeResult(summing);
-                return "0";
+                numbersDAO.setFirstNumber(NumberHolder.getNumberInString().toString());
+                NumberHolder.setNumberInString("0");
+                currentAction = ActionsWithNumbers.PLUS;
+                return numbersDAO.getFirstNumber();
             }
             case MINUS -> {
-                return ActionsWithNumbers.MINUS.name();
+                numbersDAO.setFirstNumber(NumberHolder.getNumberInString().toString());
+                NumberHolder.setNumberInString("0");
+                currentAction = ActionsWithNumbers.MINUS;
+                return numbersDAO.getFirstNumber();
             }
             case DIVISION -> {
-                return ActionsWithNumbers.DIVISION.name();
+                numbersDAO.setFirstNumber(NumberHolder.getNumberInString().toString());
+                NumberHolder.setNumberInString("0");
+                currentAction = ActionsWithNumbers.DIVISION;
+                return numbersDAO.getFirstNumber();
             }
             case MULTIPLICATION -> {
-                return ActionsWithNumbers.MULTIPLICATION.name();
+                numbersDAO.setFirstNumber(NumberHolder.getNumberInString().toString());
+                NumberHolder.setNumberInString("0");
+                currentAction = ActionsWithNumbers.MULTIPLICATION;
+                return numbersDAO.getFirstNumber();
             }
             default -> {}
         }
         return null;
     }
 
-    private void makeSumm(Action action){
-
-    }
 }

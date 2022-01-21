@@ -1,15 +1,15 @@
 package com.forfun.calc;
 
-public class Division implements Action {
+public class NumbersDAO implements Action {
     private String firstNumber;
     private String nextNumber;
 
-    public Division(String firstNumber, String nextNumber) {
-        this.firstNumber = firstNumber;
-        this.nextNumber = nextNumber;
+    public NumbersDAO() {
     }
 
-    public Division() {
+    public NumbersDAO(String firstNumber, String nextNumber) {
+        this.firstNumber = firstNumber;
+        this.nextNumber = nextNumber;
     }
 
     public String getFirstNumber() {

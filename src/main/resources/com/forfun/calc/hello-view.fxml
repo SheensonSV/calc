@@ -135,7 +135,7 @@
                     </font>
                 </Button>
 
-                <ProgressBar fx:id="progressBar" layoutY="5.0" prefHeight="19.0" prefWidth="441.0" progress="0.0"/>
+                <ProgressBar fx:id="progressBar" layoutY="5.0" prefHeight="19.0" prefWidth="441.0" progress="0.0" onMouseClicked="#onProgressBarClick"/>
                 <TextField fx:id="textField" alignment="CENTER_RIGHT" layoutX="-1.0" layoutY="94.0" prefHeight="76.0" prefWidth="365.0" text="0">
                     <font>
                         <Font size="24" />
