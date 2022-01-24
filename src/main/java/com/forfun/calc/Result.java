@@ -72,6 +72,7 @@ public class Result {
         switch (actions) {
             case PLUS -> {
                 currentAction = ActionsWithNumbers.PLUS;
+                numbersDAO.setActions(currentAction);
                 numbersDAO.setFirstNumber(numbersDAO.getNextNumber());
                 numbersDAO.setNextNumber(NumberHolder.getNumberInString().toString());
                 NumberHolder.setNumberInString("0");
@@ -80,6 +81,7 @@ public class Result {
             }
             case MINUS -> {
                 currentAction = ActionsWithNumbers.MINUS;
+                numbersDAO.setActions(currentAction);
                 numbersDAO.setFirstNumber(numbersDAO.getNextNumber());
                 numbersDAO.setNextNumber(NumberHolder.getNumberInString().toString());
                 NumberHolder.setNumberInString("0");
@@ -88,6 +90,7 @@ public class Result {
             }
             case DIVISION -> {
                 currentAction = ActionsWithNumbers.DIVISION;
+                numbersDAO.setActions(currentAction);
                 numbersDAO.setFirstNumber(numbersDAO.getNextNumber());
                 numbersDAO.setNextNumber(NumberHolder.getNumberInString().toString());
                 NumberHolder.setNumberInString("0");
@@ -96,6 +99,7 @@ public class Result {
             }
             case MULTIPLICATION -> {
                 currentAction = ActionsWithNumbers.MULTIPLICATION;
+                numbersDAO.setActions(currentAction);
                 numbersDAO.setFirstNumber(numbersDAO.getNextNumber());
                 numbersDAO.setNextNumber(NumberHolder.getNumberInString().toString());
                 NumberHolder.setNumberInString("0");
