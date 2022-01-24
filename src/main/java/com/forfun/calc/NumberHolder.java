@@ -7,56 +7,46 @@ public class NumberHolder {
     private static final short totalDigitsWithMinus = 9;
     private static final short totalSymbolsWithMinusAndComa = 10;
 
-    public static StringBuilder getNumberInString()
-    {
+    public static StringBuilder getNumberInString() {
         return numberInString;
     }
 
     public static void setNumberInString(String newNumber){
-        if (newNumber != null)
-        {
+        if (newNumber != null) {
             numberInString = new StringBuilder(newNumber);
         }
     }
 
-    public static boolean isComaPresentInSequence()
-    {
-        if (!numberInString.isEmpty())
-        {
-            for (int i = 0; i < numberInString.length(); i++)
-            {
-                if (numberInString.charAt(i) == ',')
-                {
+    public static boolean isComaPresentInSequence() {
+        if (!numberInString.isEmpty()) {
+            for (int i = 0; i < numberInString.length(); i++) {
+                if (numberInString.charAt(i) == '.') {
                     return true;
                 }
             }
         }
         return false;
     }
-    private static boolean isZeroAtFirstPlace()
-    {
-        if (!numberInString.isEmpty())
-        {
-            if (numberInString.charAt(0) == '0') {
-                return true;
-            }
+
+    private static boolean isZeroAtFirstPlace() {
+        if (!numberInString.isEmpty()) {
+            return numberInString.charAt(0) == '0';
         }
         return false;
     }
 
-    private static boolean isZeroAfterMinus(){
-        if (!numberInString.isEmpty()){
+    private static boolean isZeroAfterMinus() {
+        if (!numberInString.isEmpty()) {
             return isMinus && numberInString.charAt(1) == '0';
         }
         return false;
     }
 
-    private static void makeZero(){
+    private static void makeZero() {
         numberInString = new StringBuilder("0");
     }
 
-    public static StringBuilder addNumber(String n)
-    {
+    public static StringBuilder addNumber(String n) {
         int lengthOfNumber = numberInString.length();
         if (
                 (lengthOfNumber <= totalSymbolsWithMinusAndComa && isMinus && isComaPresentInSequence()) ||
@@ -65,7 +55,7 @@ public class NumberHolder {
                 (lengthOfNumber <= totalDigits && !isMinus && !isComaPresentInSequence())
         ) {
             switch (n) {
-                case (",") -> {
+                case (".") -> {
                     if (!isComaPresentInSequence()) {
                         numberInString.append(n);
                     }
@@ -75,9 +65,7 @@ public class NumberHolder {
                         numberInString.append(n);
                     }
                 }
-                default -> {
-                    numberInString.append(n);
-                }
+                default -> numberInString.append(n);
             }
             if (isZeroAtFirstPlace() && !isComaPresentInSequence() && !isMinus) {
                 numberInString.deleteCharAt(0);
@@ -90,12 +78,11 @@ public class NumberHolder {
         return numberInString;
     }
 
-    public static String makeNegativeOrPositiveNumber(){
-        if (!numberInString.isEmpty()){
-            if (isMinus){
+    public static String makeNegativeOrPositiveNumber() {
+        if (!numberInString.isEmpty()) {
+            if (isMinus) {
                 isMinus = false;
-                if (numberInString.toString().charAt(0) == '-')
-                {
+                if (numberInString.toString().charAt(0) == '-') {
                     numberInString.deleteCharAt(0);
                 }
             }
@@ -110,27 +97,24 @@ public class NumberHolder {
     public static String clear() {
         makeZero();
         isMinus = false;
+        Result.clearNumber();
         return numberInString.toString();
     }
 
     public static String backSpace() {
-        if (numberInString.length() == 1)
-        {
+        if (numberInString.length() == 1) {
             makeZero();
             isMinus = false;
         }
-        if (numberInString.length() == 2 && isMinus)
-        {
+        if (numberInString.length() == 2 && isMinus) {
             makeZero();
             isMinus = false;
         }
-        if (numberInString.length() == 2 && isComaPresentInSequence())
-        {
+        if (numberInString.length() == 2 && isComaPresentInSequence()) {
             makeZero();
             isMinus = false;
         }
-        if (numberInString.length() >= 2)
-        {
+        if (numberInString.length() >= 2) {
             int indexOfDeletingSymbol = numberInString.toString().length() - 1;
             numberInString.deleteCharAt(indexOfDeletingSymbol);
         }

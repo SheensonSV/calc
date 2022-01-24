@@ -27,4 +27,13 @@ public class NumbersDAO implements Action {
     public void setNextNumber(String nextNumber) {
         this.nextNumber = nextNumber;
     }
+
+    @Override
+    public String toString() {
+        return "NumbersDAO{" +
+                "firstNumber='" + firstNumber + '\'' +
+                Result.currentAction +
+                ", nextNumber='" + nextNumber + '\'' +
+                '}';
+    }
 }
