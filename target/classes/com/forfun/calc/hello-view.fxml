@@ -14,8 +14,8 @@
 
     <AnchorPane maxHeight="-1.0" maxWidth="-1.0" prefHeight="500.0" prefWidth="450.0" VBox.vgrow="ALWAYS">
         <children>
-            <Label alignment="TOP_LEFT" layoutX="359.0" layoutY="176.0" nodeOrientation="LEFT_TO_RIGHT"
-                   prefHeight="303.0" prefWidth="72.0" style="&#10;" text="123" textFill="#9f9f9f" wrapText="false">
+            <Label fx:id="label" alignment="TOP_LEFT" layoutX="359.0" layoutY="176.0" nodeOrientation="LEFT_TO_RIGHT"
+                   prefHeight="303.0" prefWidth="72.0" style="&#10;" text="" textFill="#9f9f9f" wrapText="false">
                 <font>
                     <Font size="12.0"/>
                 </font>
@@ -142,8 +142,8 @@
                     <Font size="17.0"/>
                 </font>
             </Button>
-            <Button fx:id="buttonMemoMinus" layoutX="288.0" layoutY="215.0" mnemonicParsing="false" prefHeight="35.0"
-                    prefWidth="72.0" text="М-" onMouseClicked="#onButtonClickedMemoMinus">
+            <Button fx:id="buttonMemoRepeat" layoutX="288.0" layoutY="215.0" mnemonicParsing="false" prefHeight="35.0"
+                    prefWidth="72.0" text="МR" onMouseClicked="#onButtonClickedMemoRepeat">
                 <font>
                     <Font size="17.0"/>
                 </font>

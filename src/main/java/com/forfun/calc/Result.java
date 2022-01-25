@@ -4,9 +4,19 @@ public class Result {
     private static NumbersDAO numbersDAO = new NumbersDAO();
     public static ActionsWithNumbers currentAction;
     public static boolean isPressedEquals = false;
+    private static String mediumResult;
 
     public static void clearNumber(){
         numbersDAO = new NumbersDAO();
+    }
+
+    public void someMethodForTest(ActionsWithNumbers action){
+        numbersDAO.setActions(action);
+        numbersDAO.setFirstNumber(numbersDAO.getSecondNumber());
+        numbersDAO.setSecondNumber(NumberHolder.getNumberInString().toString());
+        if (numbersDAO.getEquals() != null){
+            numbersDAO.setEquals(makeResult(numbersDAO.getActions()).toString());
+        }
     }
 
     public static StringBuilder getResult() {
@@ -18,39 +28,39 @@ public class Result {
         double result;
         switch (actions) {
             case PLUS -> {
-                numbersDAO.setFirstNumber(numbersDAO.getNextNumber());
-                numbersDAO.setNextNumber(NumberHolder.getNumberInString().toString());
-                result = Double.parseDouble(numbersDAO.getFirstNumber()) + Double.parseDouble(numbersDAO.getNextNumber());
+                numbersDAO.setFirstNumber(numbersDAO.getSecondNumber());
+                numbersDAO.setSecondNumber(NumberHolder.getNumberInString().toString());
+                result = Double.parseDouble(numbersDAO.getFirstNumber()) + Double.parseDouble(numbersDAO.getSecondNumber());
                 NumberHolder.setNumberInString(clearPointWithZero(result));
                 System.out.println(numbersDAO.toString());
                 return NumberHolder.getNumberInString();
             }
             case MINUS -> {
-                numbersDAO.setFirstNumber(numbersDAO.getNextNumber());
-                numbersDAO.setNextNumber(NumberHolder.getNumberInString().toString());
-                result = Double.parseDouble(numbersDAO.getFirstNumber()) - Double.parseDouble(numbersDAO.getNextNumber());
+                numbersDAO.setFirstNumber(numbersDAO.getSecondNumber());
+                numbersDAO.setSecondNumber(NumberHolder.getNumberInString().toString());
+                result = Double.parseDouble(numbersDAO.getFirstNumber()) - Double.parseDouble(numbersDAO.getSecondNumber());
                 NumberHolder.setNumberInString(clearPointWithZero(result));
                 System.out.println(numbersDAO.toString());
                 return NumberHolder.getNumberInString();
             }
             case DIVISION -> {
-                numbersDAO.setFirstNumber(numbersDAO.getNextNumber());
+                numbersDAO.setFirstNumber(numbersDAO.getSecondNumber());
                 double firstNum = Double.parseDouble(numbersDAO.getFirstNumber());
                 if (firstNum != 0.) {
-                    numbersDAO.setNextNumber(NumberHolder.getNumberInString().toString());
-                    result = Double.parseDouble(numbersDAO.getFirstNumber()) / Double.parseDouble(numbersDAO.getNextNumber());
+                    numbersDAO.setSecondNumber(NumberHolder.getNumberInString().toString());
+                    result = Double.parseDouble(numbersDAO.getFirstNumber()) / Double.parseDouble(numbersDAO.getSecondNumber());
                     NumberHolder.setNumberInString(clearPointWithZero(result));
                     System.out.println(numbersDAO.toString());
                     return NumberHolder.getNumberInString();
                 }
-                numbersDAO.setNextNumber(NumberHolder.getNumberInString().toString());
+                numbersDAO.setSecondNumber(NumberHolder.getNumberInString().toString());
                 System.out.println(numbersDAO.toString());
                 return new StringBuilder("0");
             }
             case MULTIPLICATION -> {
-                numbersDAO.setFirstNumber(numbersDAO.getNextNumber());
-                numbersDAO.setNextNumber(NumberHolder.getNumberInString().toString());
-                result = Double.parseDouble(numbersDAO.getFirstNumber()) * Double.parseDouble(numbersDAO.getNextNumber());
+                numbersDAO.setFirstNumber(numbersDAO.getSecondNumber());
+                numbersDAO.setSecondNumber(NumberHolder.getNumberInString().toString());
+                result = Double.parseDouble(numbersDAO.getFirstNumber()) * Double.parseDouble(numbersDAO.getSecondNumber());
                 NumberHolder.setNumberInString(clearPointWithZero(result));
                 System.out.println(numbersDAO.toString());
                 return NumberHolder.getNumberInString();
@@ -73,38 +83,38 @@ public class Result {
             case PLUS -> {
                 currentAction = ActionsWithNumbers.PLUS;
                 numbersDAO.setActions(currentAction);
-                numbersDAO.setFirstNumber(numbersDAO.getNextNumber());
-                numbersDAO.setNextNumber(NumberHolder.getNumberInString().toString());
+                numbersDAO.setFirstNumber(numbersDAO.getSecondNumber());
+                numbersDAO.setSecondNumber(NumberHolder.getNumberInString().toString());
                 NumberHolder.setNumberInString("0");
                 System.out.println(numbersDAO.toString());
-                return numbersDAO.getNextNumber();
+                return numbersDAO.getSecondNumber();
             }
             case MINUS -> {
                 currentAction = ActionsWithNumbers.MINUS;
                 numbersDAO.setActions(currentAction);
-                numbersDAO.setFirstNumber(numbersDAO.getNextNumber());
-                numbersDAO.setNextNumber(NumberHolder.getNumberInString().toString());
+                numbersDAO.setFirstNumber(numbersDAO.getSecondNumber());
+                numbersDAO.setSecondNumber(NumberHolder.getNumberInString().toString());
                 NumberHolder.setNumberInString("0");
                 System.out.println(numbersDAO.toString());
-                return numbersDAO.getNextNumber();
+                return numbersDAO.getSecondNumber();
             }
             case DIVISION -> {
                 currentAction = ActionsWithNumbers.DIVISION;
                 numbersDAO.setActions(currentAction);
-                numbersDAO.setFirstNumber(numbersDAO.getNextNumber());
-                numbersDAO.setNextNumber(NumberHolder.getNumberInString().toString());
+                numbersDAO.setFirstNumber(numbersDAO.getSecondNumber());
+                numbersDAO.setSecondNumber(NumberHolder.getNumberInString().toString());
                 NumberHolder.setNumberInString("0");
                 System.out.println(numbersDAO.toString());
-                return numbersDAO.getNextNumber();
+                return numbersDAO.getSecondNumber();
             }
             case MULTIPLICATION -> {
                 currentAction = ActionsWithNumbers.MULTIPLICATION;
                 numbersDAO.setActions(currentAction);
-                numbersDAO.setFirstNumber(numbersDAO.getNextNumber());
-                numbersDAO.setNextNumber(NumberHolder.getNumberInString().toString());
+                numbersDAO.setFirstNumber(numbersDAO.getSecondNumber());
+                numbersDAO.setSecondNumber(NumberHolder.getNumberInString().toString());
                 NumberHolder.setNumberInString("0");
                 System.out.println(numbersDAO.toString());
-                return numbersDAO.getNextNumber();
+                return numbersDAO.getSecondNumber();
             }
             default -> {}
         }

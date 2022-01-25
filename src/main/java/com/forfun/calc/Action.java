@@ -2,6 +2,6 @@ package com.forfun.calc;
 
 public interface Action {
     String getFirstNumber();
-    String getNextNumber();
+    String getSecondNumber();
     default void toInterpret() {}
 }

@@ -2,14 +2,13 @@ package com.forfun.calc;
 
 public class NumbersDAO implements Action {
     private String firstNumber;
-    private String nextNumber;
+    private String secondNumber;
     private String equals;
     private ActionsWithNumbers actions;
 
-
-    public NumbersDAO(String firstNumber, String nextNumber, String equals, ActionsWithNumbers actions) {
+    public NumbersDAO(String firstNumber, String secondNumber, String equals, ActionsWithNumbers actions) {
         this.firstNumber = firstNumber;
-        this.nextNumber = nextNumber;
+        this.secondNumber = secondNumber;
         this.equals = equals;
         this.actions = actions;
     }
@@ -33,9 +32,9 @@ public class NumbersDAO implements Action {
     public NumbersDAO() {
     }
 
-    public NumbersDAO(String firstNumber, String nextNumber) {
+    public NumbersDAO(String firstNumber, String secondNumber) {
         this.firstNumber = firstNumber;
-        this.nextNumber = nextNumber;
+        this.secondNumber = secondNumber;
     }
 
     public String getFirstNumber() {
@@ -46,12 +45,12 @@ public class NumbersDAO implements Action {
         this.firstNumber = firstNumber;
     }
 
-    public String getNextNumber() {
-        return nextNumber;
+    public String getSecondNumber() {
+        return secondNumber;
     }
 
-    public void setNextNumber(String nextNumber) {
-        this.nextNumber = nextNumber;
+    public void setSecondNumber(String secondNumber) {
+        this.secondNumber = secondNumber;
     }
 
     @Override
@@ -59,7 +58,7 @@ public class NumbersDAO implements Action {
         return "NumbersDAO{" +
                 "firstNumber= '" + firstNumber + '\'' + " " +
                 actions +
-                ", nextNumber= '" + nextNumber + '\'' +
+                ", nextNumber= '" + secondNumber + '\'' +
                 '}';
     }
 }
