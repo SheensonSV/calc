@@ -11,4 +11,13 @@ public class Memo {
         memo = NumberHolder.getNumberInString().toString();
     }
 
+    public static String memoRepeat() {
+        NumberHolder.setNumberInString(memo);
+        if (!memo.equals(""))
+        {
+            memo = "";
+            return NumberHolder.getNumberInString().toString();
+        }
+        else return "0";
+    }
 }

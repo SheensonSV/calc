@@ -2,6 +2,7 @@ package com.forfun.calc;
 
 import javafx.fxml.FXML;
 import javafx.scene.control.Button;
+import javafx.scene.control.Label;
 import javafx.scene.control.ProgressBar;
 import javafx.scene.control.TextField;
 import javafx.scene.input.MouseEvent;
@@ -43,9 +44,12 @@ public class ButtonController {
     @FXML
     private Button buttonMemoPlus;
     @FXML
-    private Button buttonMemoMinus;
+    private Button buttonMemoRepeat;
     @FXML
     private ProgressBar progressBar;
+
+    @FXML
+    private Label label;
 
     @FXML
     private TextField textField;
@@ -166,11 +170,13 @@ public class ButtonController {
     @FXML
     public void onButtonClickedMemoPlus(MouseEvent mouseEvent) {
         Memo.memoPlus();
+        label.setText(Memo.getMemo());
     }
 
     @FXML
-    public void onButtonClickedMemoMinus(MouseEvent mouseEvent) {
-        Memo.memoPlus();
+    public void onButtonClickedMemoRepeat(MouseEvent mouseEvent) {
+        changeText(Memo.memoRepeat());
+        label.setText("");
     }
 
     public void changeText(String text){
@@ -186,7 +192,7 @@ public class ButtonController {
     }
 
     @FXML
-    protected void onProgressBarClick() throws InterruptedException {
+    protected void onProgressBarClick() {
        fillProgressBar = fillProgressBar + 0.025;
        progressBar.setProgress(fillProgressBar);
        if (fillProgressBar > 0.9999)

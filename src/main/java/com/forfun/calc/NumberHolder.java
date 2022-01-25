@@ -13,7 +13,9 @@ public class NumberHolder {
 
     public static void setNumberInString(String newNumber){
         if (newNumber != null) {
-            numberInString = new StringBuilder(newNumber);
+            numberInString.delete(0, numberInString.length());
+            numberInString.append(newNumber);
+            isMinus = false;
         }
     }
 
@@ -43,7 +45,7 @@ public class NumberHolder {
     }
 
     private static void makeZero() {
-        numberInString = new StringBuilder("0");
+        setNumberInString("0");
     }
 
     public static StringBuilder addNumber(String n) {
@@ -96,7 +98,6 @@ public class NumberHolder {
 
     public static String clear() {
         makeZero();
-        isMinus = false;
         Result.clearNumber();
         return numberInString.toString();
     }
@@ -104,15 +105,12 @@ public class NumberHolder {
     public static String backSpace() {
         if (numberInString.length() == 1) {
             makeZero();
-            isMinus = false;
         }
         if (numberInString.length() == 2 && isMinus) {
             makeZero();
-            isMinus = false;
         }
         if (numberInString.length() == 2 && isComaPresentInSequence()) {
             makeZero();
-            isMinus = false;
         }
         if (numberInString.length() >= 2) {
             int indexOfDeletingSymbol = numberInString.toString().length() - 1;
