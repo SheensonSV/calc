@@ -1,6 +1,6 @@
 package com.forfun.calc;
 
-public class NumbersDAO implements Action {
+public class NumbersDAO {
     private String firstNumber;
     private String secondNumber;
     private String equals;
@@ -59,6 +59,7 @@ public class NumbersDAO implements Action {
                 "firstNumber= '" + firstNumber + '\'' + " " +
                 actions +
                 ", nextNumber= '" + secondNumber + '\'' +
+                ", equals= '" + equals + '\'' +
                 '}';
     }
 }

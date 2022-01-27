@@ -149,22 +149,22 @@ public class ButtonController {
 
     @FXML
     public void onButtonClickedMinus(MouseEvent mouseEvent) {
-        changeText(Result.act(ActionsWithNumbers.MINUS));
+        changeText(Result.doWhenActionButtonPressed(ActionsWithNumbers.MINUS));
     }
 
     @FXML
     public void onButtonClickedPlus(MouseEvent mouseEvent) {
-        changeText(Result.act(ActionsWithNumbers.PLUS));
+        changeText(Result.doWhenActionButtonPressed(ActionsWithNumbers.PLUS));
     }
 
     @FXML
     public void onButtonClickedMultiply(MouseEvent mouseEvent) {
-        changeText(Result.act(ActionsWithNumbers.MULTIPLICATION));
+        changeText(Result.doWhenActionButtonPressed(ActionsWithNumbers.MULTIPLICATION));
     }
 
     @FXML
     public void onButtonClickedDivision(MouseEvent mouseEvent) {
-        changeText(Result.act(ActionsWithNumbers.DIVISION));
+        changeText(Result.doWhenActionButtonPressed(ActionsWithNumbers.DIVISION));
     }
 
     @FXML
